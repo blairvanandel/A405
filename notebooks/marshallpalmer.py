@@ -22,3 +22,20 @@ ax.set_xlabel('Drop diameter (mm)')
 ax.set_ylabel('$n(D) m^{-3} mm^{-1}$')
 ax.set_title('Marshall Palmer distribution for three rain rates')
 ax.legend(loc='best')
+
+#Thompkins pg. 81
+#to use diff must omit lasat value of Dcm
+
+Dint = (np.sum(Dcm[:-1]*N0*np.exp(-theLambda*Dcm[:-1])*np.diff(Dcm[:-1])))\
+/(np.sum(N0*np.exp(-theLambda*Dcm[:-1])*np.diff(Dcm[:-1]))
+
+
+diameter = np.array([0,50,1000,5000])/1000000 #m
+radius = diameter/2
+
+rho = 1  #kg/m^3
+rholiq = 1000 #kg/m^3
+R = 15 #mm/hr
+g = 9.81  #m/s^2
+W1 = 1.2e8*radius**2
+W2 = -np.sqrt(rholiq/rho*g*D)
